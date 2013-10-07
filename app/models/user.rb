@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name,:password,:password_confirmation
   
   
+  
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   validates :name ,:presence =>true,
@@ -33,6 +34,8 @@ class User < ActiveRecord::Base
     (user && user.salt == cookie_salt) ? user :nil
   end
   
+
+  
   private
     def encrypt_password
 	  self.salt=make_salt if new_record?
@@ -50,6 +53,8 @@ class User < ActiveRecord::Base
     def secure_hash(string)
 		Digest::SHA2.hexdigest(string)
     end
+
+    
 
 end
 
