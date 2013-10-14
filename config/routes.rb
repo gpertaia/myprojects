@@ -11,7 +11,7 @@ TestApp2::Application.routes.draw do
 
   get "pages/contact"
 
-
+  get '/microposts/:id', to: 'microposts#destroy'
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
